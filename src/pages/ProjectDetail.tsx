@@ -143,7 +143,8 @@ const ProjectDetail = () => {
               ))}
             </div>
             
-            <div className="flex gap-4">
+            {/* Buttons temporarily hidden */}
+            {/* <div className="flex gap-4">
               <Button 
                 className="bg-hero-gradient hover:opacity-90 text-white"
                 asChild
@@ -164,7 +165,7 @@ const ProjectDetail = () => {
                   View Code
                 </a>
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
