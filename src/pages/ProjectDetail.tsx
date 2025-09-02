@@ -3,91 +3,14 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
+import { useProjects } from '@/contexts/ProjectContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-// Extended project data with multiple images and detailed descriptions
-const projectsData = {
-  "dashboard-analytics": {
-    id: 1,
-    title: "Dashboard Analytics",
-    description: "Platform analytics modern dengan visualisasi data real-time menggunakan React dan Chart.js. Fitur include custom dashboard, real-time notifications, dan export data.",
-    technologies: ["React", "TypeScript", "Chart.js", "Tailwind CSS", "Node.js"],
-    demoLink: "https://demo.example.com",
-    githubLink: "https://github.com/example/dashboard",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-        title: "Dashboard Utama",
-        description: "Interface utama dashboard dengan widget analytics real-time dan grafik interaktif"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-        title: "Data Visualization",
-        description: "Berbagai jenis chart dan grafik untuk visualisasi data yang comprehensive"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop",
-        title: "Settings & Configuration",
-        description: "Panel konfigurasi untuk customize dashboard sesuai kebutuhan user"
-      }
-    ]
-  },
-  "ecommerce-platform": {
-    id: 2,
-    title: "E-Commerce Platform",
-    description: "Platform e-commerce lengkap dengan fitur cart, payment gateway, inventory management, dan admin dashboard. Dibangun dengan arsitektur microservices.",
-    technologies: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "Redis"],
-    demoLink: "https://demo.example.com",
-    githubLink: "https://github.com/example/ecommerce",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-        title: "Homepage & Product Catalog",
-        description: "Halaman utama dengan product showcase dan sistem pencarian yang powerful"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
-        title: "Shopping Cart & Checkout",
-        description: "Proses checkout yang smooth dengan integrasi multiple payment gateway"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&h=600&fit=crop",
-        title: "Admin Dashboard",
-        description: "Panel admin untuk manage products, orders, dan analytics penjualan"
-      }
-    ]
-  },
-  "task-management": {
-    id: 3,
-    title: "Task Management App",
-    description: "Aplikasi manajemen tugas dengan fitur kolaborasi tim, real-time updates, file sharing, dan integrasi kalender. UI/UX yang clean dan intuitif.",
-    technologies: ["React Native", "Firebase", "Redux", "Socket.io"],
-    demoLink: "https://demo.example.com",
-    githubLink: "https://github.com/example/taskapp",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop",
-        title: "Task Board & Kanban",
-        description: "Interface kanban board untuk organize tasks dengan drag & drop functionality"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-        title: "Team Collaboration",
-        description: "Fitur kolaborasi tim dengan real-time chat dan file sharing"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-        title: "Calendar Integration",
-        description: "Integrasi kalender untuk tracking deadline dan scheduling meetings"
-      }
-    ]
-  }
-};
-
 const ProjectDetail = () => {
   const { projectId } = useParams<{ projectId: string }>();
-  const project = projectId ? projectsData[projectId as keyof typeof projectsData] : null;
+  const { getProjectBySlug } = useProjects();
+  const project = projectId ? getProjectBySlug(projectId) : null;
 
   if (!project) {
     return (
@@ -184,30 +107,36 @@ const ProjectDetail = () => {
             </p>
             
             <div className="space-y-12">
-              {project.images.map((image, index) => (
-                <Card key={index} className="overflow-hidden bg-card-gradient border-border">
-                  <CardContent className="p-0">
-                    <div className="grid md:grid-cols-2 gap-0">
-                      <div className="relative overflow-hidden">
-                        <img 
-                          src={image.url} 
-                          alt={image.title}
-                          className="w-full h-64 md:h-80 object-cover"
-                        />
-                        <div className="absolute inset-0 bg-hero-gradient opacity-10"></div>
+              {project.images && project.images.length > 0 ? (
+                project.images.map((image, index) => (
+                  <Card key={index} className="overflow-hidden bg-card-gradient border-border">
+                    <CardContent className="p-0">
+                      <div className="grid md:grid-cols-2 gap-0">
+                        <div className="relative overflow-hidden">
+                          <img 
+                            src={image.url} 
+                            alt={image.title}
+                            className="w-full h-64 md:h-80 object-cover"
+                          />
+                          <div className="absolute inset-0 bg-hero-gradient opacity-10"></div>
+                        </div>
+                        <div className="p-8 flex flex-col justify-center">
+                          <h3 className="text-2xl font-bold mb-4 text-foreground">
+                            {image.title}
+                          </h3>
+                          <p className="text-muted-foreground leading-relaxed">
+                            {image.description}
+                          </p>
+                        </div>
                       </div>
-                      <div className="p-8 flex flex-col justify-center">
-                        <h3 className="text-2xl font-bold mb-4 text-foreground">
-                          {image.title}
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {image.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                ))
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-muted-foreground">No gallery images available for this project.</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

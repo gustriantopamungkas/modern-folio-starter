@@ -3,44 +3,11 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Github, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import project1 from '@/assets/project-1.jpg';
-import project2 from '@/assets/project-2.jpg';
-import project3 from '@/assets/project-3.jpg';
-
-const projects = [
-  {
-    id: 1,
-    slug: "dashboard-analytics",
-    title: "Dashboard Analytics",
-    description: "Platform analytics modern dengan visualisasi data real-time menggunakan React dan Chart.js. Fitur include custom dashboard, real-time notifications, dan export data.",
-    image: project1,
-    technologies: ["React", "TypeScript", "Chart.js", "Tailwind CSS", "Node.js"],
-    demoLink: "https://demo.example.com",
-    githubLink: "https://github.com/example/dashboard"
-  },
-  {
-    id: 2,
-    slug: "ecommerce-platform",
-    title: "E-Commerce Platform",
-    description: "Platform e-commerce lengkap dengan fitur cart, payment gateway, inventory management, dan admin dashboard. Dibangun dengan arsitektur microservices.",
-    image: project2,
-    technologies: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "Redis"],
-    demoLink: "https://demo.example.com",
-    githubLink: "https://github.com/example/ecommerce"
-  },
-  {
-    id: 3,
-    slug: "task-management",
-    title: "Task Management App",
-    description: "Aplikasi manajemen tugas dengan fitur kolaborasi tim, real-time updates, file sharing, dan integrasi kalender. UI/UX yang clean dan intuitif.",
-    image: project3,
-    technologies: ["React Native", "Firebase", "Redux", "Socket.io"],
-    demoLink: "https://demo.example.com",
-    githubLink: "https://github.com/example/taskapp"
-  }
-];
+import { useProjects } from '@/contexts/ProjectContext';
 
 const Projects = () => {
+  const { projects } = useProjects();
+
   return (
     <section id="projects" className="py-20 bg-muted/20">
       <div className="container mx-auto px-6">

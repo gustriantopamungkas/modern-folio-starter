@@ -36,6 +36,9 @@ const Navbar = () => {
                 {item}
               </button>
             ))}
+            <a href="/admin" className="text-foreground/80 hover:text-primary transition-colors duration-300">
+              Admin
+            </a>
           </div>
         </div>
       </div>
