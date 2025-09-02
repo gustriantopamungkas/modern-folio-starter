@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import project1 from '@/assets/project-1.jpg';
 import project2 from '@/assets/project-2.jpg';
 import project3 from '@/assets/project-3.jpg';
@@ -9,6 +10,7 @@ import project3 from '@/assets/project-3.jpg';
 const projects = [
   {
     id: 1,
+    slug: "dashboard-analytics",
     title: "Dashboard Analytics",
     description: "Platform analytics modern dengan visualisasi data real-time menggunakan React dan Chart.js. Fitur include custom dashboard, real-time notifications, dan export data.",
     image: project1,
@@ -18,6 +20,7 @@ const projects = [
   },
   {
     id: 2,
+    slug: "ecommerce-platform",
     title: "E-Commerce Platform",
     description: "Platform e-commerce lengkap dengan fitur cart, payment gateway, inventory management, dan admin dashboard. Dibangun dengan arsitektur microservices.",
     image: project2,
@@ -27,6 +30,7 @@ const projects = [
   },
   {
     id: 3,
+    slug: "task-management",
     title: "Task Management App",
     description: "Aplikasi manajemen tugas dengan fitur kolaborasi tim, real-time updates, file sharing, dan integrasi kalender. UI/UX yang clean dan intuitif.",
     image: project3,
@@ -82,10 +86,10 @@ const Projects = () => {
                       className="bg-hero-gradient hover:opacity-90 text-white flex-1"
                       asChild
                     >
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Demo
-                      </a>
+                      <Link to={`/project/${project.slug}`}>
+                        <Eye className="mr-2 h-4 w-4" />
+                        View Details
+                      </Link>
                     </Button>
                     
                     <Button 
