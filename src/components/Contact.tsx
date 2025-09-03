@@ -45,158 +45,84 @@ const Contact = () => {
             Mari berkolaborasi dan wujudkan ide-ide brilian bersama
           </p>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-6 text-foreground">
-                  Mari Terhubung
-                </h3>
-                <p className="text-muted-foreground mb-8 leading-relaxed">
-                  Saya selalu terbuka untuk mendiskusikan proyek baru, ide kreatif, 
-                  atau peluang kolaborasi. Jangan ragu untuk menghubungi saya!
-                </p>
-              </div>
+        <div className="max-w-2xl mx-auto">
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-6 text-foreground text-center">
+                Mari Terhubung
+              </h3>
+              <p className="text-muted-foreground mb-8 leading-relaxed text-center">
+                Saya selalu terbuka untuk mendiskusikan proyek baru, ide kreatif, 
+                atau peluang kolaborasi. Jangan ragu untuk menghubungi saya!
+              </p>
+            </div>
 
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <Mail className="text-primary" size={20} />
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">Email</p>
-                    <a href="mailto:john@example.com" className="text-muted-foreground hover:text-primary transition-colors">
-                      john@example.com
-                    </a>
-                  </div>
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4 justify-center">
+                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <Mail className="text-primary" size={20} />
                 </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
-                    <MapPin className="text-accent" size={20} />
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">Lokasi</p>
-                    <p className="text-muted-foreground">Jakarta, Indonesia</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <Phone className="text-primary" size={20} />
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">Telepon</p>
-                    <a href="tel:+6281234567890" className="text-muted-foreground hover:text-primary transition-colors">
-                      +62 812 3456 7890
-                    </a>
-                  </div>
+                <div>
+                  <p className="font-medium text-foreground">Email</p>
+                  <a href="mailto:john@example.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    john@example.com
+                  </a>
                 </div>
               </div>
 
-              <div className="pt-6">
-                <h4 className="font-semibold mb-4 text-foreground">Ikuti Saya</h4>
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://github.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
-                  >
-                    <Github size={20} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a 
-                    href="mailto:john@example.com"
-                    className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
-                  >
-                    <Mail size={20} />
+              <div className="flex items-center space-x-4 justify-center">
+                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                  <MapPin className="text-accent" size={20} />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">Lokasi</p>
+                  <p className="text-muted-foreground">Jakarta, Indonesia</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4 justify-center">
+                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <Phone className="text-primary" size={20} />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">Telepon</p>
+                  <a href="tel:+6281234567890" className="text-muted-foreground hover:text-primary transition-colors">
+                    +62 812 3456 7890
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <Card className="p-8 bg-card-gradient border-border">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2 text-foreground">
-                      Nama
-                    </label>
-                    <Input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="bg-background border-border"
-                      placeholder="Nama Anda"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2 text-foreground">
-                      Email
-                    </label>
-                    <Input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="bg-background border-border"
-                      placeholder="email@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-foreground">
-                    Subjek
-                  </label>
-                  <Input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="bg-background border-border"
-                    placeholder="Subjek pesan"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-foreground">
-                    Pesan
-                  </label>
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="bg-background border-border resize-none"
-                    placeholder="Tulis pesan Anda di sini..."
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  className="w-full bg-hero-gradient hover:opacity-90 text-white"
+            <div className="pt-6 text-center">
+              <h4 className="font-semibold mb-4 text-foreground">Ikuti Saya</h4>
+              <div className="flex space-x-4 justify-center">
+                <a 
+                  href="https://github.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
                 >
-                  <Send className="mr-2 h-5 w-5" />
-                  Kirim Pesan
-                </Button>
-              </form>
-            </Card>
+                  <Github size={20} />
+                </a>
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
+                >
+                  <Linkedin size={20} />
+                </a>
+                <a 
+                  href="mailto:john@example.com"
+                  className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
+                >
+                  <Mail size={20} />
+                </a>
+              </div>
+            </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
