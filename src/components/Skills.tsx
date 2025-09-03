@@ -1,39 +1,9 @@
 import { Card } from '@/components/ui/card';
-
-const skillCategories = [
-  {
-    title: "Frontend",
-    skills: [
-      { name: "React", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "Next.js", level: 80 },
-      { name: "Tailwind CSS", level: 90 },
-      { name: "Vue.js", level: 75 },
-    ]
-  },
-  {
-    title: "Backend",
-    skills: [
-      { name: "Node.js", level: 85 },
-      { name: "Python", level: 80 },
-      { name: "PostgreSQL", level: 75 },
-      { name: "MongoDB", level: 70 },
-      { name: "Redis", level: 65 },
-    ]
-  },
-  {
-    title: "Tools & Others",
-    skills: [
-      { name: "Git", level: 90 },
-      { name: "Docker", level: 75 },
-      { name: "AWS", level: 70 },
-      { name: "Figma", level: 85 },
-      { name: "Vercel", level: 80 },
-    ]
-  }
-];
+import { useSkills } from '@/contexts/SkillsContext';
 
 const Skills = () => {
+  const { skillCategories, additionalTechnologies } = useSkills();
+
   return (
     <section id="skills" className="py-20 bg-background">
       <div className="container mx-auto px-6">
@@ -78,10 +48,7 @@ const Skills = () => {
           <div className="mt-16 text-center">
             <h3 className="text-xl font-semibold mb-6 text-foreground">Teknologi Lainnya</h3>
             <div className="flex flex-wrap justify-center gap-3">
-              {[
-                "GraphQL", "Socket.io", "Jest", "Cypress", "Webpack", "Vite", 
-                "Prisma", "Express.js", "Flutter", "React Native", "Firebase", "Supabase"
-              ].map((tech) => (
+              {additionalTechnologies.map((tech) => (
                 <span 
                   key={tech} 
                   className="px-4 py-2 bg-muted rounded-full text-muted-foreground hover:bg-primary/20 hover:text-primary transition-colors duration-300"
